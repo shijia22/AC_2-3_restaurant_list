@@ -31,7 +31,7 @@
 ## 安裝與執行步驟
 
 1. 打開終端機，clone 此專案至本機電腦
-   `https://github.com/shijia22/AC_2-3_restaurant_list.git
+   `https://github.com/shijia22/AC_2-3_restaurant_list.git`
 2. 開啟終端機，進入存放此專案資料夾
    `cd AC_2-3_restaurant_list
 3. 安裝 npm 套件
