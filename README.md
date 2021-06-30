@@ -31,12 +31,12 @@
 ## 安裝與執行步驟
 
 1. 打開終端機，clone 此專案至本機電腦
-   `https://github.com/shijia22/AC_2-3_restaurant_list.git`
-2. 開啟終端機，進入存放此專案資料夾
-   `cd AC_2-3_restaurant_list
+`https://github.com/shijia22/AC_2-3_restaurant_list.git`
+3. 開啟終端機，進入存放此專案資料夾
+   `cd AC_2-3_restaurant_list`
 3. 安裝 npm 套件
-   `npm install
+   `npm install`
 4. 啟動專案
-   `npm run dev
+   `npm run dev`
 5. 出現以下訊息後，即可在 http://localhost:3000 開始使用
-   `Express is listening on localhost:3000
+   `Express is listening on localhost:3000`
