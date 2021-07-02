@@ -38,5 +38,7 @@
    `npm install`
 4. 啟動專案
    `npm run dev`
-5. 出現以下訊息後，即可在 http://localhost:3000 開始使用
+5. 啟動 nodemon
+   `nodemon app.js`
+7. 出現以下訊息後，即可在 http://localhost:3000 開始使用
    `Express is listening on localhost:3000`
