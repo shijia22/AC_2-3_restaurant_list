@@ -87,13 +87,42 @@ app.get('/searches', (req, res) => {
   res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 
-// show
+// detail
 app.get('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
     .then((restaurant) => res.render('detail', { restaurant }))
     .catch((error) => console.log(error))
+})
+
+// edit
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch((error) => console.error(error))
+})
+
+app.post('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  const updatedRestaurant = req.body
+  return Restaurant.findById(id)
+    .then((restaurant) => {
+      restaurant.name = updatedRestaurant.name
+      restaurant.name_en = updatedRestaurant.name_en
+      restaurant.category = updatedRestaurant.category
+      restaurant.image = updatedRestaurant.image
+      restaurant.location = updatedRestaurant.location
+      restaurant.phone = updatedRestaurant.phone
+      restaurant.google_map = updatedRestaurant.google_map
+      restaurant.rating = updatedRestaurant.rating
+      restaurant.description = updatedRestaurant.description
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch((error) => console.error(error))
 })
 
 app.listen(port, () => {
