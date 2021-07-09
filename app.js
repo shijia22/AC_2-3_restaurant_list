@@ -46,7 +46,7 @@ app.get('/restaurants/new', (req, res) => {
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.post('/todos', (req, res) => {
+app.post('/restaurants', (req, res) => {
   const {
     name,
     name_en,
@@ -88,11 +88,12 @@ app.get('/searches', (req, res) => {
 })
 
 // show
-app.get('/restaurants/:restaurant_id', (req, res) => {
-  const restaurant = restaurantList.results.find(
-    (restaurant) => restaurant.id.toString() === req.params.restaurant_id
-  )
-  res.render('show', { restaurant: restaurant })
+app.get('/restaurants/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('detail', { restaurant }))
+    .catch((error) => console.log(error))
 })
 
 app.listen(port, () => {
