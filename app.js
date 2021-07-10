@@ -30,7 +30,9 @@ app.get('/searches', (req, res) => {
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurant = restaurantList.results.find(
     (restaurant) => restaurant.id.toString() === req.params.restaurant_id
-  )
+  ) if (!restaurant) {
+    return res.render('error')
+  }
   res.render('show', { restaurant: restaurant })
 })
 
