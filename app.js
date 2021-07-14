@@ -57,7 +57,7 @@ app.post('/restaurants', (req, res) => {
     google_map,
     rating,
     description,
-  } = req.body.name // 從 req.body 拿出表單裡的 name 資料
+  } = req.body
   return Restaurant.create({
     name,
     name_en,
