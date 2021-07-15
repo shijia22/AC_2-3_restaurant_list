@@ -5,6 +5,7 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const Restaurant = require('./models/restaurant') // 載入 restaurant model 
 const bodyParser = require('body-parser') // 引用 body-parser
+const methodOverride = require('method-override') // 載入 method-override
 
 
 mongoose.connect('mongodb://localhost/menu', {
@@ -29,6 +30,8 @@ app.set('view engine', 'hbs')
 
 // setting static files
 app.use(express.static('public'))
+// 設定每一筆請求都會透過 methodOverride 進行前置處理
+app.use(methodOverride('_method'))
 
 // index
 app.get('/', (req, res) => {
@@ -97,7 +100,7 @@ app.get('/restaurants/:id', (req, res) => {
 })
 
 // edit
-app.get('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
@@ -126,7 +129,7 @@ app.post('/restaurants/:id', (req, res) => {
 })
 
 // delete
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then((restaurant) => restaurant.remove())
