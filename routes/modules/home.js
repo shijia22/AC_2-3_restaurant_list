@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const Restaurant = require('../../models/restaurant') // 載入 restaurant model 
+const Restaurant = require('../../models/restaurant') // 載入 restaurant model
 const restaurantList = require('../../models/seeds/restaurantSeeder')
 
 // index
@@ -15,14 +15,25 @@ router.get('/', (req, res) => {
 // searches
 router.get('/searches', (req, res) => {
   const keyword = req.query.keyword
-  const restaurants = restaurantList.results.filter((restaurant) => {
-    return (
-      restaurant.name.toLowerCase().includes(keyword.toLowerCase()) ||
-      restaurant.category
-        .toLocaleLowerCase()
-        .includes(keyword.toLocaleLowerCase())
-    )
-  })
-  res.render('index', { restaurants: restaurants, keyword: keyword })
+  Restaurant.find()
+    .lean()
+    .then((restaurants) => {
+      if (keyword) {
+        restaurants = restaurants.filter(
+          (restaurant) =>
+            restaurant.name.toLowerCase().includes(keyword) ||
+            restaurant.category.includes(keyword)
+        )
+      }
+      if (restaurants.length === 0) {
+        const error = '很遺憾，沒有符合搜尋的結果。'
+        return res.render('index', { error })
+      }
+      res.render('index', {
+        restaurants,
+      })
+    })
+    .catch((error) => console.error(error))
 })
+
 module.exports = router
