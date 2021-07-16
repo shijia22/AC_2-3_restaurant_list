@@ -1,6 +1,6 @@
 # Restaurant List
 
-這是 AC 2-3 學期 A3 / A6 用 Node.js、Express、MongoDB 所建置的餐廳列表網站
+這是 AC 2-3 學期 A3 / A6 / A8 用 Node.js、Express、MongoDB 所建置的餐廳列表網站
 
 ## Features
 
@@ -29,6 +29,7 @@
 - jQuery v3.3.1
 - popperjs v2.9.1
 - MongoDB
+- method-override
 
 ## 安裝與執行步驟
 
@@ -52,5 +53,7 @@
    `git checkout S1_A4`
 - 學期 2-3 A6 進度
    `git checkout S3_A6`
+- 學期 2-3 A8 進度
+   `git checkout S3_A8`
 - 只想看最終成果
    `git checkout main`
