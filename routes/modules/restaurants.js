@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
 })
 
 // edit
-router.put('/:id', (req, res) => {
+router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .lean()
@@ -54,7 +54,7 @@ router.put('/:id', (req, res) => {
     .catch((error) => console.error(error))
 })
 
-router.post('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id
   const updatedRestaurant = req.body
   return Restaurant.findById(id)
