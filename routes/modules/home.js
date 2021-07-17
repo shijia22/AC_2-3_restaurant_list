@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 
 const Restaurant = require('../../models/restaurant') // 載入 restaurant model
-const restaurantList = require('../../models/seeds/restaurantSeeder')
 
 // index
 router.get('/', (req, res) => {
