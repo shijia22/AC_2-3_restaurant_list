@@ -27,7 +27,7 @@ router.get('/searches', (req, res) => {
       }
       if (restaurants.length === 0) {
         const error = '很遺憾，沒有符合搜尋的結果。'
-        return res.render('index', { error })
+        return res.render('index', { error, restaurants, keyword })
       }
       res.render('index', {
         restaurants,
