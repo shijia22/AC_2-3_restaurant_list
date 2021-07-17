@@ -31,6 +31,7 @@ router.get('/searches', (req, res) => {
       }
       res.render('index', {
         restaurants,
+        keyword,
       })
     })
     .catch((error) => console.error(error))
